@@ -6,7 +6,7 @@ import { useState } from 'react';
 export interface Qs{
   def:string,
   answer:string | number
-  options:(number | string)[]
+  options:number[] | string[]
   }
 function App() {
 

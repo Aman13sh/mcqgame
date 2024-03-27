@@ -40,32 +40,15 @@ console.log(props.score);
     <div >
       
         <p className='h-[30px] p-2'>  <span>Q</span>{QusBank[page].def}</p>
-        <div className='flex'>
-            <label  htmlFor="opt-1" className='block w-[50%] h-[50px] border rounded-md'>
-            <input  type="radio" id="opt-1"  name="options" onChange={()=>{setValue(QusBank[page].options[0])}}
-            className=''/>
-            <p className='text-center'>{QusBank[page].options[0]}</p></label>
-            <label htmlFor="opt-2"  className='block w-[50%] h-[50px] border rounded-md'>
-            <input type="radio" id="opt-2" name="options" onChange={()=>{setValue(QusBank[page].options[1])}}
-            className=''/>
-            <p className='text-center'>{QusBank[page].options[1]}</p></label>
-            </div>
-            <div className='flex'>
-            <label htmlFor="opt-3" className='block w-[50%] h-[50px] border rounded-md'>
-            <input type="radio" id="opt-3"  name="options" onChange={()=>{setValue(QusBank[page].options[2])}}
-            className=''/>
-            <p className='text-center'>{QusBank[page].options[2]}</p>
-            </label>
-         
+        <div>
+            {QusBank[page].options.map((option) => (
+                    <button className="border rounded-md p-3 m-3" key={option} onClick={() =>{setValue(option)}}>
+                        {option}
+                    </button>
+            ))
+            }
+        </div>
            
-            <label htmlFor="opt-4" className='block w-[50%] h-[50px] border rounded-md'>
-            <input type="radio" id="opt-4"  name="options" onChange={()=>{setValue(QusBank[page].options[3])}}
-            className=''/>
-            <p className='text-center'>{QusBank[page].options[3]}</p></label>
-            </div>
-           
-        
-
         {page < QusBank.length-1 ? <button onClick={handleChange} className='border rounded-md bg-green-700 p-1'>Next</button> : 
         <button onClick={handleSub} className='order rounded-md bg-green-700 p-1'>Submit</button> }
         {complete ? <Navigate to="/finalscore"/> : <p></p>}
