@@ -17,6 +17,8 @@ const [page,setPage]=useState(0);
 const[value,setValue]=useState<string|number>("NA")
 
 const[complete,steComplete]=useState(false);
+const[select,setSelect]=useState(false);
+const[keyId,setKeyId]=useState<string|number>(-1);
 function handleChange(){
     if(value == "NA"){
         alert("select an option")
@@ -42,7 +44,11 @@ console.log(props.score);
         <p className='h-[30px] p-2'>  <span>Q</span>{QusBank[page].def}</p>
         <div>
             {QusBank[page].options.map((option) => (
-                    <button className="border rounded-md p-3 m-3" key={option} onClick={() =>{setValue(option)}}>
+                    <button  key={option} className={option === keyId ? (select ? "border rounded-md p-3 m-3 bg-green-400" : "border rounded-md p-3 m-3") : "border rounded-md p-3 m-3"}
+                     onClick={(e) =>{setValue(option)
+                        setSelect(true);
+                        setKeyId(option)
+                    console.log(e.currentTarget)}}>
                         {option}
                     </button>
             ))
